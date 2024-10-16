@@ -6,8 +6,8 @@ import sys
 callsign = sys.argv[1]  
   
 def parse_adif_to_txt():  
-    with open(f'parse/{callsign}.adif') as inp_file:  
-        with open(f'parse/{callsign}.txt', 'w') as out_file:  
+    with open(f'parse/dx_spots/{callsign}.adif') as inp_file:  
+        with open(f'parse/dx_spots/{callsign}.txt', 'w') as out_file:  
             for line in inp_file:  
                 qso_date = line.find('QSO_DATE:')  
                 if qso_date == -1:  
