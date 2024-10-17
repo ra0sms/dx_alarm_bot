@@ -20,9 +20,7 @@ async def cmd_get(
 ):
     spots = ""
     if command.args is None:
-        await message.answer(
-            "Ошибка: не переданы аргументы"
-        )
+        await message.answer("Ошибка: не переданы аргументы")
         return
     try:
         callsign = command.args
@@ -85,6 +83,7 @@ async def main():
     dp.message.register(cmd_start, Command("start"))
     dp.message.register(cmd_get, Command("get"))
     await bot.send_message(591915735,text="Перезапуск")
+    await bot.set_my_commands(["get"])
     await dp.start_polling(bot)
 
 if __name__ == "__main__":
