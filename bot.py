@@ -12,6 +12,7 @@ logging.basicConfig(level=logging.INFO)
 bot = Bot(token=config.bot_token.get_secret_value())
 dp = Dispatcher()
 
+
 @dp.message(Command("get"))
 async def cmd_get(
         message: types.Message,
@@ -60,6 +61,7 @@ def read_last_spots(callsign: str) -> str:
     try:
         subprocess.run(["parse/get_spots.sh"] + [callsign])
         file_path = f'parse/dx_spots/{callsign}.txt'
+        file_path_adif = f'parse/dx_spots/{callsign}.adif'
     except Exception as e:
         return "Нет файла с dx-позывным"
     out =""
@@ -69,6 +71,8 @@ def read_last_spots(callsign: str) -> str:
 
     for line in lines:
         out += (line)
+    subprocess.run(["rm"] + [file_path])
+    subprocess.run(["rm"] + [file_path_adif])
     if out:
         return out
     else:
