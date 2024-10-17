@@ -83,7 +83,7 @@ async def main():
     dp.message.register(cmd_start, Command("start"))
     dp.message.register(cmd_get, Command("get"))
     await bot.send_message(591915735,text="Перезапуск")
-    bot.set_my_commands([
+    await bot.set_my_commands([
         ('start', 'Запустить бота'),
         ('get', 'Получить помощь')
     ])
