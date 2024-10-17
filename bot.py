@@ -4,6 +4,7 @@ import asyncio
 import logging
 from aiogram import Bot, Dispatcher, types
 from aiogram.filters.command import Command, CommandObject
+from aiogram.types import BotCommand, BotCommandScopeDefault
 import random
 import subprocess
 from config_reader import config
@@ -83,10 +84,7 @@ async def main():
     dp.message.register(cmd_start, Command("start"))
     dp.message.register(cmd_get, Command("get"))
     await bot.send_message(591915735,text="Перезапуск")
-    await bot.set_my_commands([
-        ('start', 'Запустить бота'),
-        ('get', 'Получить помощь')
-    ])
+    await bot.set_my_commands([BotCommand(command='start', description='Начало работы')],  BotCommandScopeDefault())
     await dp.start_polling(bot)
 
 if __name__ == "__main__":
