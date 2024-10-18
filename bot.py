@@ -5,6 +5,7 @@ import logging
 from aiogram import Bot, Dispatcher, types
 from aiogram.filters.command import Command, CommandObject
 from aiogram.types import BotCommand, BotCommandScopeDefault
+from aiogram.enums import ParseMode
 import random
 import subprocess
 from config_reader import config
@@ -44,9 +45,13 @@ async def cmd_get(
 @dp.message(Command("start"))
 async def cmd_start(message: types.Message):
     await message.answer(
-        f"Hello {message.from_user.full_name}!\n"
-        "Споты за последние 15 минут: /get <позывной>\n"
-        "Например, /get ra0sms"        
+        f"Привет {message.from_user.full_name}!\n"
+        "Споты за последние 15 минут:\n"
+        " ```\n"
+        "/get <позывной>\n"
+        "```\n"
+        "Например, /get ra0sms", 
+        parse_mode=ParseMode.MARKDOWN_V2 
     )
 
 
