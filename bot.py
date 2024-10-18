@@ -45,11 +45,11 @@ async def cmd_get(
 @dp.message(Command("start"))
 async def cmd_start(message: types.Message):
     await message.answer(
-        f"Привет {message.from_user.full_name}!\n"
-        "Споты за последние 15 минут:\n"
+        f"Привет {message.from_user.full_name}\n"
+        "Споты за последние 15 минут:"
         " ```\n"
         "/get <позывной>\n"
-        "```\n"
+        "```"
         "Например, /get ra0sms", 
         parse_mode=ParseMode.MARKDOWN_V2 
     )
