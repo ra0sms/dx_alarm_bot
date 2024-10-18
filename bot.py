@@ -59,8 +59,9 @@ async def cmd_rand(message: types.Message):
 def read_last_spots(callsign: str) -> str:
     try:
         subprocess.run(["parse/get_spots.sh"] + [callsign])
-        file_path = f'parse/dx_spots/{callsign}.txt'
-        file_path_adif = f'parse/dx_spots/{callsign}.adif'
+        slash_call = callsign.replace('/', '_')
+        file_path = f'parse/dx_spots/{slash_call}.txt'
+        file_path_adif = f'parse/dx_spots/{slash_call}.adif'
     except Exception as e:
         return "Нет файла с dx-позывным"
     out =""
